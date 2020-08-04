@@ -1,0 +1,109 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- <h1>My first electron app.</h1> -->
+    <div class="menu">
+        <div class="menu-items ib" id="File">File</div>
+        <div class="menu-items ib" id="Home">Home</div>
+    </div>
+
+    <div class="menu-options">
+        <div id="File-options" class="menu-options-item">
+            <div id="New" class="ib">New</div>
+            <div id="Open" class="ib">Open</div>
+            <div id="Save" class="ib">Save</div>
+        </div>
+        <div id="Home-options" class="menu-options-item">
+            <div id="HomeMenu" class="ib">
+                <div class="menu-group">
+                    <div class="menu-row">
+                        <select id="font-style">
+                            <option value="cursive">Cursive</option>
+                            <option value="arial">Arial</option>
+                            <option value="monospace">Monospace</option>
+                            <option value="serif">Serif</option>
+                            <option value="sans-serif">Sans-serif</option>
+                        </select>
+                        <select id="font-size">
+                            <option value="12">12</option>
+                            <option value="14">14</option>
+                            <option value="16">16</option>
+                            <option value="20">20</option>
+                            <option value="32">32</option>
+                        </select>
+                    </div>
+                    <div class="property-row">
+                        <input type = "button" value="B" id="bold">
+                        <input type = "button" value="U" id="underline">
+                        <input type = "button" value="I" id="italic">
+                        <input type="color" id="b-color">
+                        <input type="color" id="font-color">
+                    </div>
+                </div>
+
+                <div class="align-row">
+                    <input type = "button" value="L" id="left">
+                    <input type = "button" value="C" id="right">
+                    <input type = "button" value="R" id="right">
+                </div>
+                <!-- <div class="menu-group"> -->
+            </div>
+            <!-- <div id = "Options" class = "ib">Options</div> -->
+        </div>
+    </div>
+
+    <div class="formula-bar">
+        <input type="text" id="address-container">
+        <div class ="formula-symbol">fx</div>
+        <input type="text" id="formula-container">
+    </div>
+
+    <div class="cell-container" id="grid-container">
+        <!-- for top left cell (to make it independent of grid)-->
+        <div class="top-left-cell" id="top-left-cell">
+        </div>
+
+        <!-- for top row (to make it independent of grid)-->
+        <div class="top-row" id="top-row">
+            <%for(let i = 0 ; i<26 ; i++){%>
+            <div class="cell">
+                <%=String.fromCharCode(i+65)%>
+            </div>
+            <%}%>
+        </div>
+
+        <!-- for left most column (to make it independent of grid) -->
+        <div class="left-column" id="left-column">
+            <%for(let j = 1 ; j<=100 ; j++){%>
+            <div class="cell">
+                <%=j%>
+            </div>
+            <%}%>    
+        </div>
+
+        <!-- GRID -->
+        <div class="grid" id="grid"> 
+            <%for(let i=0 ; i<rows ; i++){%>
+            <div class="row">
+                <%for(let j=0 ; j<26;j++){%>
+                <div class="cell" contentEditable="true" rowId=<%=i%> colId=<%=j%>>
+                    <!-- <%=String.fromCharCode(65+j)%> -->
+                </div>
+                <%}%>
+            </div>
+            <%}%>
+            </div>
+        </div>
+
+        <div class="sheets">Sheets</div>
+        <script src="index.js"></script>
+</body>
+
+</html>
